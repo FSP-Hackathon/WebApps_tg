@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,800&family=Roboto:wght@300;500&display=swap" rel="stylesheet">   
+</head>
+
+<body>
+    <h2>Личный кабинет</h2>
+    <div class="card" onclick="location.href='statistics.html';">
+        <img src="stata.png" alt="Иконка 1" class="icon">
+        <div class="card-content">
+            <h3>Статистика по метрикам</h3>
+            <p>CPU, RAM, TEMP, DISK, RPS, Среднее время запроса</p>
+        </div>
+    </div>
+
+    <div class="card" onclick="location.href='other_page.html';">
+        <img src="bug.png" alt="Иконка 2" class="icon">
+        <div class="card-content">
+            <h3>Ошибки</h3>
+            <p>Ошибки от базы данных за последнее время</p>
+        </div>
+    </div>
+
+    <div class="card" onclick="location.href='other_page.html';">
+        <img src="inf.png" alt="Иконка 3" class="icon">
+        <div class="card-content">
+            <h3>Текущий статус</h3>
+            <p>Основная информация и текущем состояниеи базы данных</p>
+        </div>
+    </div>
+    <p id="futter">бот разработан в рамках отборочного этапа чемпионата России по спортивному программированию в дисциплине "продуктовое программирование" командой г. Москвы </p>
+</body>
+
+</html>

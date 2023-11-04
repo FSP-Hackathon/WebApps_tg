@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,800&family=Roboto:wght@300;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="graf">
+    <h2>График CPU</h2>
+    <canvas id="myChart" width="20" height="20"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Получаем ссылку на элемент canvas и создаем контекст для рисования
+        const ctx = document.getElementById('myChart').getContext('2d');
+
+        // Функция для получения данных с сервера (ваш серверный код)
+        function fetchDataFromServer() {
+            // Здесь должен быть код для запроса данных с сервера
+            // Пример:
+            return fetch('data.json')
+                .then(response => response.json())
+                .then(data => data);
+        }
+
+        // Функция для построения графика
+        async function createChart() {
+            const data = await fetchDataFromServer();
+
+            // Конфигурация графика
+            const config = {
+                type: 'line', // Тип графика
+                data: {
+                    labels: data.labels, // Метки по оси X
+                    datasets: [{
+                        label: 'usage',
+                        data: data.values_1, // Данные для отображения
+                        borderColor: 'blue', // Цвет линии графика
+                        borderWidth: 2 // Толщина линии графика
+                    },
+                    {
+                        label: 'что-то ещё',
+                        data: data.values_2, // Дополнительные данные для отображения
+                        borderColor: 'red', // Цвет линии графика для второго набора данных
+                        borderWidth: 2 // Толщина линии графика для второго набора данных
+                    }
+                    ]
+                }
+            };
+
+            // Создаем экземпляр графика
+            const myChart = new Chart(ctx, config);
+        }
+
+        createChart();
+    </script>
+
+    <div class="back" onclick="location.href='statistics.html';">
+        <img src="back.png" alt="Иконка 3" class="icon_back">
+        <div class="card_button-content">
+            <h3 class="h3_back">Вернуться назад</h3>
+        </div>
+    </div>
+</body>
+
+</html>
