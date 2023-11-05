@@ -1,4 +1,13 @@
 const ctx = document.getElementById("myChart_2").getContext("2d");
+const res = await fetch("http://localhost:8888/myPath/", {
+  method: "POST",
+  mode: "cors",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(body),
+});
+
 function fetchDataFromServer() {
   return fetch(
     "http://84.201.153.19:50000/metrica/db1?type=ram&duration=3600",

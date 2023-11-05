@@ -1,4 +1,12 @@
 const ctx = document.getElementById("myChart_1").getContext("2d");
+const res = await fetch("http://localhost:8888/myPath/", {
+  method: "POST",
+  mode: "cors",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(body),
+});
 
 function fetchDataFromServer() {
   return fetch(
