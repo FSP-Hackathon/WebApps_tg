@@ -1,58 +1,75 @@
 // Получаем ссылку на элемент canvas и создаем контекст для рисования
-const ctx = document.getElementById("myChart").getContext("2d");
+const ctx = document.getElementById("myChart_2").getContext("2d");
 
 // Функция для получения данных с сервера (ваш серверный код)
 function fetchDataFromServer() {
-    return fetch("http://84.201.153.19:50000/metrica/ram", {
+  return fetch(
+    "http://84.201.153.19:50000/metrica/db1?type=ram&duration=3600",
+    {
       method: "GET",
-    });
+    }
+  );
 }
 // Функция для построения графика
 async function createChart() {
-    response = await fetchDataFromServer();
-    if (response == undefined) {
-      console.log("wtf")
-    }
+  response = await fetchDataFromServer();
+  if (response == undefined) {
+    console.log("wtf");
+  }
 
-    json = await response.json()
+  json = await response.json();
 
-    labels = []
-    sysData = []
-    usedData = []
-    totalData = []
-    for (let i = 0; i < json.data.length; i++) {
-      labels.push(json.data[i].timestamp)
-      sysData.push(json.data[i].sys)
-      usedData.push(json.data[i].used)
-      totalData.push(json.data[i].total)
-    }
+  labels = [];
+  sysData = [];
+  usedData = [];
+  totalData = [];
+  for (let i = 0; i < json.data.length; i++) {
+    date = new Date(json.data[i].timestamp * 1000);
+    // Hours part from the timestamp
+    var hours = date.getHours();
 
-    // Конфигурация графика
-    const config = {
-      type: "line", // Тип графика
-      data: {
-          labels: labels,
-          datasets: [{
-              label: 'Sys RAM',
-              data: sysData,
-              borderColor: 'rgba(255, 99, 132, 1)',
-              fill: false
-          }, {
-              label: 'Used RAM',
-              data: usedData,
-              borderColor: 'rgba(54, 162, 235, 1)',
-              fill: false
-          }, {
-            label: 'Total RAM',
-            data: totalData,
-            borderColor: 'rgba(68, 148, 74, 1)',
-            fill: false
-        }]
-      },
-    };
+    // Minutes part from the timestamp
+    var minutes = "0" + date.getMinutes();
 
-    // Создаем экземпляр графика
-    const myChart = new Chart(ctx, config);
+    // Seconds part from the timestamp
+    var seconds = "0" + date.getSeconds();
+    var time = hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+    labels.push(time);
+    sysData.push(json.data[i].sys);
+    usedData.push(json.data[i].used);
+    totalData.push(json.data[i].total);
+  }
+
+  // Конфигурация графика
+  const config = {
+    type: "line", // Тип графика
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: "Sys RAM",
+          data: sysData,
+          borderColor: "rgba(255, 99, 132, 1)",
+          fill: false,
+        },
+        {
+          label: "Used RAM",
+          data: usedData,
+          borderColor: "rgba(54, 162, 235, 1)",
+          fill: false,
+        },
+        {
+          label: "Total RAM",
+          data: totalData,
+          borderColor: "rgba(68, 148, 74, 1)",
+          fill: false,
+        },
+      ],
+    },
+  };
+
+  // Создаем экземпляр графика
+  const myChart_2 = new Chart(ctx, config);
 }
 
 createChart();
