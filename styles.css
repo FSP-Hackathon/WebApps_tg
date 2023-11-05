@@ -6,16 +6,16 @@ body {
 	/* justify-content: center; */
 	height: 100vh;
 	margin-top: 50px;
-	color: var(--tg-theme-text-color);
-	background: var(--tg-theme-bg-color);
+	color: var(--var-textcolor);
+	background: var(--var-bgcolor);
 }
 
 .card {
 	width: 350px;
 	height: 100px;
 	border-radius: 8px;
-	background: #FFF;
-	box-shadow: 0px 0px 10px 0px rgba(128, 123, 181, 0.15);
+	background: var(--var-cardcolor);
+	/* box-shadow: 0px 0px 10px 0px rgba(128, 123, 181, 0.15); */
 	margin-bottom: 10px;
 	display: flex;
 	align-items: center;
@@ -43,14 +43,14 @@ body {
 
 h2 {
 	margin-bottom: 30px;
-	color: var(--tg-theme-text-color);
+	color: var(--var-textcolor);
 	font-size: 22px;
 	font-weight: 500;
 	margin-top: 0;
 }
 
 h3 {
-	color: var(--tg-theme-text-color);
+	color: var(--var-textcolor);
 	font-size: 18px;
 	font-weight: 500;
 	margin-bottom: 5px;
@@ -59,7 +59,7 @@ h3 {
 
 p {
 	margin: 0;
-	color: var(--tg-theme-hint-color);
+	color: var(--var-hintcolor);
 	font-size: 14px;
 	font-weight: 300;
 	line-height: 110%;
@@ -77,8 +77,8 @@ p {
 
 .card_button {
 	border-radius: 8px;
-	background: #FFF;
-	box-shadow: 0px 0px 10px 0px rgba(128, 123, 181, 0.15);
+	background: var(--var-cardcolor);
+	/* box-shadow: 0px 0px 10px 0px rgba(128, 123, 181, 0.15); */
 	margin-bottom: 10px;
 	margin-right: 10px;
 }
@@ -102,15 +102,15 @@ p {
 	width: 222px;
 	height: 50px;
 	border-radius: 8px;
-	background: var(--tg-theme-button-color);
-	color: var(--tg-theme-button-text-color);
+	background: var(--var-buttoncolor);
+	color: var(--var-buttontextcolor);
 	display: flex;
 	align-items: center;
 	margin-top: 40px;
 }
 
 .back:hover {
-	background: var(--tg-theme-button-color-hover);
+	background: var(--var-buttoncolor-hover);
 }
 
 .icon_back {
@@ -119,9 +119,13 @@ p {
 	margin-left: 20px;
 }
 
+svg{
+	fill:var(--var-buttontextcolor)
+}
+
 .h3_back {
 	margin: 0;
-	color: var(--tg-theme-button-text-color);
+	color: var(--var-buttontextcolor);
 }
 
 .graf {
@@ -143,24 +147,23 @@ p {
 
 
 :root {
-	--tg-theme-text-color: #000;
-	--tg-theme-bg-color: #EFF2F8;
-	--tg-theme-hint-color: #888;
-	--tg-theme-link-color: #00f;
-	--tg-theme-button-color: #00f;
-	--tg-theme-button-color-hover:rgb(0, 0, 116);
-	--tg-theme-button-text-color: #fff;
-	--tg-theme-chart-bg-color: #f5f5f5;
-	--tg-theme-chart-border-color: #ccc;
+	--var-bgcolor:#E9EEF8;
+	--var-cardcolor: #FFF;
+	--var-textcolor:#030303;
+	--var-hintcolor:#777;
+	--var-buttoncolor:#00f;
+	--var-buttontextcolor:#fff;
+	--var-buttoncolor-hover:rgb(0, 0, 188);
 }
 
-[data-theme="dark"] {
-	--tg-theme-text-color: #fff;
-	--tg-theme-bg-color: #1B1C21;
-	--tg-theme-hint-color: #777;
-	--tg-theme-link-color: #0ff;
-	--tg-theme-button-color: #0ff;
-	--tg-theme-button-text-color: #000;
-	--tg-theme-chart-bg-color: #333;
-	--tg-theme-chart-border-color: #777;
+@media (prefers-color-scheme: dark) {
+	:root {
+		--var-bgcolor:#1B1C21;
+		--var-cardcolor: #27292F;
+		--var-textcolor:#FFFFFF;
+		--var-hintcolor:#B3B0B0;
+		--var-buttoncolor:#CECEFF;
+		--var-buttontextcolor:#1F2251;
+		--var-buttoncolor-hover:#9090da;
+}
 }
