@@ -11,23 +11,26 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,800&family=Roboto:wght@300;500&display=swap"
         rel="stylesheet">
-    <script>
-        console.log("Hello!")
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+<body class="all_graf">
+    <h2>График CPU</h2>
+    <canvas id="myChart_1" width="100" height="100"></canvas>
+    <script src="JS/cpu.js"></script>
 
-<body class="graf">
+    <h2>График DISK</h2>
+    <canvas id="myChart_3" width="100" height="100"></canvas>
+    <script src="JS/disk.js"></script>
+
     <h2>График RAM</h2>
-    <canvas id="myChart_2" width="300" height="300"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="JS/ram.js"></script>
+    <canvas id="myChart_2" width="100" height="100"></canvas>
+    <script src="JS/ram.js"></script>
     <div class="back" onclick="location.href='statistics.html';">
         <img src="img/back.png" alt="Иконка 3" class="icon_back">
         <div class="card_button-content">
             <h3 class="h3_back">Вернуться назад</h3>
         </div>
     </div>
-    <!-- <p id="futter">бот разработан в рамках отборочного этапа чемпионата России по спортивному программированию в дисциплине "продуктовое программирование" командой г. Москвы </p> -->
 </body>
 
 </html>
