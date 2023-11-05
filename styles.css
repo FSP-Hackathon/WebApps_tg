@@ -5,7 +5,7 @@ body {
 	align-items: center;
 	/* justify-content: center; */
 	height: 100vh;
-	margin-top: 50px;
+	margin-top: 30px;
 	color: var(--var-textcolor);
 	background: var(--var-bgcolor);
 }
@@ -133,7 +133,7 @@ svg{
 	height: 100vh;
 	display: flex;
 	align-items: center;
-	padding-top: 50px;
+	padding-top: 30px;
 	margin: auto;
 }
 

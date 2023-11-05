@@ -1,7 +1,5 @@
-// Получаем ссылку на элемент canvas и создаем контекст для рисования
 const ctx = document.getElementById("myChart_3").getContext("2d");
 
-// Функция для получения данных с сервера (ваш серверный код)
 function fetchDataFromServer() {
   return fetch(
     "http://84.201.153.19:50000/metrica/db1?type=disk&duration=3600",
@@ -11,7 +9,6 @@ function fetchDataFromServer() {
   );
 }
 
-// Функция для построения графика
 async function createChart() {
   response = await fetchDataFromServer();
   if (response == undefined) {
@@ -41,7 +38,6 @@ async function createChart() {
     totalData.push(json.data[i].total);
   }
 
-  // Конфигурация графика
   const config = {
     type: "line", // Тип графика
     data: {
@@ -69,7 +65,6 @@ async function createChart() {
     },
   };
 
-  // Создаем экземпляр графика
   const myChart_3 = new Chart(ctx, config);
 }
 
