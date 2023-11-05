@@ -1,7 +1,7 @@
 const ctx = document.getElementById("myChart_2").getContext("2d");
 function fetchDataFromServer() {
   return fetch(
-    "http://84.201.153.19:50000/metrica/db1?type=ram&duration=3600",
+    "http://84.201.153.19:50000/metrica/metrics?duration=100000000&type=ram",
     {
       method: "GET",
       mode: "cors",
@@ -20,7 +20,7 @@ async function createChart() {
   sysData = [];
   usedData = [];
   totalData = [];
-  for (let i = 0; i < json.data.length; i++) {
+  for (let i = 0; i < Math.min(20,json.data.length); i++) {
     date = new Date(json.data[i].timestamp * 1000);
     // Hours part from the timestamp
     var hours = date.getHours();
